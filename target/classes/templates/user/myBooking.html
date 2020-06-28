@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+<head>
+
+<title>我的订单</title>
+
+<!-- Meta-Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Meta-Tags -->
+<!-- Custom-Stylesheet-Links -->
+<!-- Bootstrap-CSS --> 		<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/user_resources/css/bootstrap.min.css}" type="text/css" media="all">
+<!-- Index-Page-CSS --> 	<link rel="stylesheet" href="css/style.css" 	th:href="@{/user_resources/css/style.css}"	type="text/css" media="all">
+<!-- Gallery-Popup-CSS -->  <link rel="stylesheet" href="css/chocolat.css" 	th:href="@{/user_resources/css/chocolat.css}"	type="text/css" media="all">
+<!-- Animate.CSS --> 		<link rel="stylesheet" href="css/animate.css" 		th:href="@{/user_resources/css/animate.css}"	type="text/css" media="all">
+<!-- //Custom-Stylesheet-Links -->
+
+<!-- Fonts -->
+<!-- Body-Font -->	 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css">
+<!-- Logo-Font -->	 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700" type="text/css">
+<!-- Navbar-Font --> <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700"			   type="text/css">
+<!-- //Fonts -->
+
+</head>
+<!-- //Head -->
+
+
+
+<!-- Body -->
+<body>
+
+	<!-- Header -->
+	<div class="header agileits w3layouts" id="home">
+
+		<!-- Navbar -->
+		<div th:replace="commons/index_bar::topbar"></div>
+		<!-- //Navbar -->
+
+	</div>
+	<!-- //Header -->
+
+
+
+	<!-- Specials -->
+	<div class="specials agileits w3layouts">
+
+		<h3>我的订单</h3>
+		<h4 th:if="${session.USERNAME_USER}==null">您还未登录，<a href="/user/login" style="color: #ff1a29">点击此处</a>进行登录</h4>
+		<table class="table">
+			<thead>
+			<tr style="text-align: center">
+				<th>#</th>
+				<th>订单号</th>
+				<th>地点</th>
+				<th>酒店</th>
+				<th>类型</th>
+				<th>支付人</th>
+				<th>电话</th>
+				<th>支付金额</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<nav aria-label="Page navigation example" style="text-align: center">
+			<ul class="pagination">
+
+			</ul>
+		</nav>
+
+	</div>
+	<!-- //Specials -->
+
+
+	<!-- Footer -->
+	<div th:replace="commons/index_bar::footerbar"></div>
+	<!-- //Footer -->
+
+
+
+	<!-- Necessary-JavaScript-Files-&-Links -->
+
+		<!-- Default-JavaScript -->	  <script type="text/javascript" src="js/jquery-2.1.4.min.js" th:src="@{/user_resources/js/jquery-2.1.4.min.js}"></script>
+		<!-- Bootstrap-JavaScript --> <script type="text/javascript" src="js/bootstrap.min.js" th:src="@{/user_resources/js/bootstrap.min.js}"></script>
+
+		<!-- Animate.CSS-JavaScript -->
+			<script src="js/wow.min.js" th:src="@{/user_resources/js/wow.min.js}"></script>
+				<script>
+					new WOW().init();
+				</script>
+		<!-- //Animate.CSS-JavaScript -->
+
+		<!-- Portfolio-Popup-Box-JavaScript -->
+			<script src="js/modernizr.custom.97074.js" th:src="@{/user_resources/js/modernizr.custom.97074.js}"></script>
+			<script src="js/jquery.chocolat.js" th:src="@{/user_resources/js/jquery.chocolat.js}"></script>
+			<script type="text/javascript">
+				$(function() {
+					$('.special-grid a').Chocolat();
+				});
+			</script>
+		<!-- //Portfolio-Popup-Box-JavaScript -->
+
+		<!-- Show-More-JavaScript-File -->
+			<script>
+				$(document).ready(function () {
+					size_li = $("#myList li").size();
+					x=1;
+					$('#myList li:lt('+x+')').show();
+					$('#loadMore').click(function () {
+						x= (x+1 <= size_li) ? x+1 : size_li;
+						$('#myList li:lt('+x+')').show();
+					});
+					$('#showLess').click(function () {
+						x=(x-1<0) ? 1 : x-1;
+						$('#myList li').not(':lt('+x+')').hide();
+					});
+				});
+			</script>
+		<!-- Show-More-JavaScript-File -->
+
+		<!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 100,
+						easingType: 'linear'
+					};
+					$().UItoTop({ easingType: 'easeOutQuart' });
+				});
+			</script>
+			<a href="#" id="toTop" class="agileits w3layouts" style="display: block;"> <span id="toTopHover" style="opacity: 0;"> </span></a>
+		<!-- //Slide-To-Top JavaScript -->
+
+		<!-- Smooth-Scrolling-JavaScript -->
+			<script type="text/javascript" src="js/move-top.js" th:src="@{/user_resources/js/move-top.js}"></script>
+			<script type="text/javascript" src="js/easing.js" th:src="@{/user_resources/js/easing.js}"></script>
+	        <script type="text/javascript" src="jquery/layer/layer.js" th:src="@{/asserts/login_resource/jquery/layer/layer.js}"></script>
+	        <script type="text/javascript" src="/script/contextBar.js" th:src="@{/user_resources/js/contextBar2.js}"></script>
+			<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll, .navbar li a, .footer li a").click(function(event){
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+					});
+			</script>
+		<!-- //Smooth-Scrolling-JavaScript -->
+
+	<!-- //Necessary-JavaScript-Files-&-Links -->
+	<script type="text/javascript">
+		$(function () {
+			doqueryList(1);
+		});
+
+		function doqueryList(currentPage){
+			var loadingIndex=-1;
+			$.ajax({
+				type : "POST",
+				url : "/user/myBookings",
+				data :{
+					"currentPage" : currentPage,
+					"pageSize"  : 10
+				},
+				beforeSend : function() {
+					loadingIndex =  layer.msg('正在加载数据',{icon : 16});
+					return true;
+				},
+				success : function(result){
+					layer.close(loadingIndex);
+					var page = result.data;
+					var data = page.datas;
+					var content = '';
+
+					if(result.success){
+						$.each(data , function(i, order){
+							content+=' <tr>';
+							content+='<td>'+(i+1)+'</td>';
+							content+='<td>'+order.code+'</td>';
+							content+='<td >'+order.scenic+'</td>';
+							content+='<td >'+order.hotel+'</td>';
+							content+='<td >'+order.type+'</td>';
+							content+='<td >'+order.name+'</td>';
+							content+='<td >'+order.phone+'</td>';
+							content+='<td >'+order.paymoney+'</td>';
+							content+='</tr>';
+						});
+						$("tbody").html(content);
+						getContextBar(page);
+					}else{
+						layer.msg("加载数据失败", {time : 1000,icon : 5,shift : 6})
+					}
+				}
+			});
+		};
+
+	</script>
+
+
+
+</body>
+<!-- //Body -->
+
+</html>

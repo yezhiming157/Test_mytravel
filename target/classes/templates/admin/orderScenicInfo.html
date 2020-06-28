@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!--引入top bar-->
+    <div th:replace="commons/bar::topbar"></div>
+    <!-- 引入left bar-->
+    <div th:replace="commons/bar::leftbar"></div>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-12">
+                    <h4 class="page-title">订单信息</h4>
+                    <ol class="breadcrumb">
+                        <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                        <li class="active">订单信息</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+                        <div class="col-lg-12">
+                            <h4 class="page-title">订单列表</h4>
+                            <ol class="breadcrumb">
+                                <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                                <li><a href="#" th:href="@{/admin/toScenicOrder}">订单列表</a></li>
+                                <li class="active">订单信息</li>
+                            </ol>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="white-box" style="margin-top: 20%">
+                        <div class="user-bg" >
+                            <div class="overlay-box">
+                                <div class="user-content">
+                                    <a href="javascript:void(0)"><img src="images/users/genu.jpg" th:src="@{/images/users/head_photo.jpg}" class="thumb-lg img-circle" alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    <div class="white-box">
+                        <form class="form-horizontal form-material" >
+                            <div class="form-group">
+                                <label class="col-md-12">订单号</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:value="${scenicOrder.code}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">景点名</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:value="${scenicOrder.scenicnName}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">张数</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line"  th:value="${scenicOrder.number}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">支付金额($)</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:value="${scenicOrder.payment}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">支付时间</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-line" th:value="${scenicOrder.paytime}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">支付人</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-line" th:value="${scenicOrder.userName}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">电话</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control form-control-line" th:value="${scenicOrder.phone}" readonly>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+<footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+<!--Nice scroll JavaScript -->
+<script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+<!--Wave Effects -->
+<script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+</body>
+
+</html>

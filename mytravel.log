@@ -1,0 +1,38 @@
+2020-04-26 00:55:04.769  INFO 26972 --- [restartedMain] c.j.y.m.MytravelprojectApplication       : Starting MytravelprojectApplication on YeZhiMing with PID 26972 (G:\IdeaProjects\mytravelproject\target\classes started by lenovo in G:\IdeaProjects\mytravelproject)
+2020-04-26 00:55:04.824 DEBUG 26972 --- [restartedMain] c.j.y.m.MytravelprojectApplication       : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-26 00:55:04.825  INFO 26972 --- [restartedMain] c.j.y.m.MytravelprojectApplication       : No active profile set, falling back to default profiles: default
+2020-04-26 00:55:05.094  INFO 26972 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in G:\Mvnrepository\repos\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/G:/Mvnrepository/repos/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-04-26 00:55:05.095  INFO 26972 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-04-26 00:55:05.095  INFO 26972 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-04-26 00:55:06.909  INFO 26972 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-26 00:55:07.029  INFO 26972 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111ms. Found 10 JPA repository interfaces.
+2020-04-26 00:55:08.064  INFO 26972 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-26 00:55:08.073  INFO 26972 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-26 00:55:08.073  INFO 26972 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-26 00:55:08.282  INFO 26972 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-26 00:55:08.285  INFO 26972 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3190 ms
+2020-04-26 00:55:08.561  INFO 26972 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-26 00:55:08.897  INFO 26972 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-26 00:55:08.957  INFO 26972 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-26 00:55:09.160  INFO 26972 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-04-26 00:55:09.630  INFO 26972 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-26 00:55:09.822  INFO 26972 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-04-26 00:55:10.611  INFO 26972 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-26 00:55:10.618  INFO 26972 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-26 00:55:11.421  INFO 26972 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-26 00:55:11.484 DEBUG 26972 --- [restartedMain] c.j.y.m.config.MyMvcConfig               : ---------拦截器------------------
+2020-04-26 00:55:11.564 DEBUG 26972 --- [restartedMain] c.j.y.m.config.MyMvcConfig               : ---------视图解析器------------------
+2020-04-26 00:55:12.944  INFO 26972 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-26 00:55:13.035  INFO 26972 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-26 00:55:13.037  INFO 26972 --- [restartedMain] c.j.y.m.MytravelprojectApplication       : Started MytravelprojectApplication in 10.562 seconds (JVM running for 16.791)
+2020-04-26 00:55:13.040 DEBUG 26972 --- [restartedMain] c.j.y.m.MytravelprojectApplication       : LOGGING DEBUG
+2020-04-26 01:04:13.889  INFO 26972 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-26 01:04:13.890  INFO 26972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-26 01:04:13.938  INFO 26972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 48 ms
+2020-04-26 01:04:22.839 DEBUG 26972 --- [http-nio-8080-exec-1] c.j.y.m.c.admin.AdminLoginController     : username = admin
+2020-04-26 01:04:22.839 DEBUG 26972 --- [http-nio-8080-exec-1] c.j.y.m.c.admin.AdminLoginController     : password = admin
+2020-04-26 01:04:23.814 DEBUG 26972 --- [http-nio-8080-exec-1] c.j.y.m.c.admin.AdminLoginController     : Result{success=true, message='null', data=null}
+2020-04-26 01:04:24.059  INFO 26972 --- [http-nio-8080-exec-4] c.j.y.m.config.InterceptorConfig         : ---------------------开始进入请求地址拦截----------------------------
+2020-04-26 01:04:24.059 DEBUG 26972 --- [http-nio-8080-exec-4] c.j.y.m.config.InterceptorConfig         : 请求放行！！
+2020-04-26 01:04:24.059  INFO 26972 --- [http-nio-8080-exec-4] c.j.y.m.config.InterceptorConfig         : --------------处理请求完成后视图渲染之前的处理操作---------------
+2020-04-26 01:04:24.470  INFO 26972 --- [http-nio-8080-exec-4] c.j.y.m.config.InterceptorConfig         : ---------------视图渲染之后的操作-------------------------0

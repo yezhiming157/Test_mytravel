@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" th:href="@{/asserts/login_resource/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/css/font-awesome.min.css" th:href="@{/asserts/login_resource/css/font-awesome.min.css}">
+	<link rel="stylesheet" href="/css/login.css" th:href="@{/asserts/login_resource/css/login.css}">
+      <style type="text/css">
+      #div_back
+      {
+          width:1280px;
+          height:720px;
+          border:1px solid gray;
+          background-image:url("/images/big/pika.jpg");
+          background-repeat:no-repeat;
+          position: absolute;
+          left:20%;
+          top:20%;
+          margin-left:-100px;
+          margin-top:-100px;
+      }
+         </style>
+      <title>用户注册</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-inner navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <div><a class="navbar-brand" style="font-size:32px;" th:href="@{/index}">JXAU旅游网</a></div>
+          </div>
+      </div>
+  </nav>
+  <div id="div_back">
+    <div class="container">
+        <div style="width: 500px;height: 100px;margin: auto;position: relative;">
+            <h1 class="navbar-brand" style="font-size:32px;text-align: center;color:#fffefa"></h1>
+        </div>
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 用户注册</h2>
+		  <div class="form-group has-success has-feedback">
+			<input type="text" class="form-control" id="loginacct" placeholder="请输入登录账号" autofocus>
+			<span class="glyphicon glyphicon-user form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="password" class="form-control" id="userpswd" placeholder="请输入登录密码" style="margin-top:10px;">
+			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="password" class="form-control" id="userpswd2" placeholder="确认登录密码" style="margin-top:10px;">
+			<span class="glyphicon glyphicon-check form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="text" class="form-control" id="email" placeholder="请输入邮箱地址" style="margin-top:10px;">
+			<span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
+		  </div>
+        <a class="btn btn-lg btn-success btn-block" onclick="doreg()" > 注册</a>
+          <a class="btn btn-lg btn-danger btn-block"  href="/user/login">我要登录</a>
+      </form>
+    </div>
+  </div>
+<script src="/jquery/jquery-2.1.1.min.js" th:src="@{/asserts/login_resource/jquery/jquery-2.1.1.min.js}"></script>
+<script src="/bootstrap/js/bootstrap.min.js" th:src="@{/asserts/login_resource/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="/jquery/layer/layer.js" th:src="@{/asserts/login_resource/jquery/layer/layer.js}"></script>
+	<script type="text/javascript">
+		var loginacct = $("#loginacct");
+
+		$("#loginacct").on('blur', function() {
+			$.ajax({
+				url : "/user/reg/checkUser",
+				type : "GET",
+				data : {
+					"loginacct" : loginacct.val()
+				},
+				success : function(result) {
+					if(result.success){
+						layer.msg("该用户名可用！",{time : 1000,icon : 6,shift : 5});
+					}else{
+						layer.msg("用户名已存在！",{time : 1000,icon : 5,shift : 6});
+					}
+				}
+			});
+
+		});
+
+		function doreg() {
+			var userpswd = $("#userpswd");
+			var loginacct = $("#loginacct");
+			var email = $("#email");
+			var userpswd2 = $("#userpswd2");
+			
+			//判断账号是否为空
+			if ($.trim(loginacct.val()) == "") {
+				layer.msg("用户账号不能为空，请重新输入！！", {time : 1000,icon : 5,shift : 6}, function() {
+					//将数据清空
+					loginacct.val("");
+					//获取焦点
+					loginacct.focus();
+				});
+				return false;
+			}
+			
+			//判断密码是否为空
+			if ($.trim(userpswd.val()) == "") {
+				layer.msg("用户密码不能为空，请重新输入！！", {time : 1000,icon : 5,shift : 6}, function() {
+					//将数据清空
+					userpswd.val("");
+					//获取焦点
+					userpswd.focus();
+				});		
+				return false;
+			}
+			
+			//判断密码是否一致，不一致重新输入  一致则进行注册操作
+			if (userpswd.val() != userpswd2.val()) {
+				layer.msg("两次密码不一致，请重新输入", {time : 1000,icon : 5,shift : 6}, function() {
+					userpswd2.val("");
+					userpswd2.focus();
+				});		
+				return false;
+			} else if (userpswd.val() == userpswd2.val()) {
+				$.ajax({
+					url : "/user/reg/doreg",
+					type : "POST",
+					data : {
+                        "name" : loginacct.val(),
+						"password" : userpswd.val(),
+						"email" : email.val()
+					},
+					success : function(result) {
+						if (result.success) {					
+							layer.msg("注册成功,跳转登入页面！！", {time : 1000,icon : 6,shift : 6}, function() {
+								window.location.href = "/user/login";
+							});	
+						}  else {
+							layer.msg("注册失败，请重新注册！！", {time : 1000,icon : 5,shift : 6});
+						} 
+					}
+				});
+			}
+		}
+	</script>
+</body>
+</html>

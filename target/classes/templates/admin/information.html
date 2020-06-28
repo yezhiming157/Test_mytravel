@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!--引入top bar-->
+        <div th:replace="commons/bar::topbar"></div>
+        <!-- 引入left bar-->
+        <div th:replace="commons/bar::leftbar"></div>
+        <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-12">
+                    <h4 class="page-title">个人信息</h4>
+                    <ol class="breadcrumb">
+                        <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                        <li class="active">个人信息</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="white-box">
+                        <div class="user-bg"> <img width="100%" alt="user" src="images/large/img1.jpg" th:src="@{/images/big/img1.jpg}">
+                            <div class="overlay-box">
+                                <div class="user-content">
+                                    <a href="javascript:void(0)"><img src="images/users/genu.jpg" th:src="@{/images/users/head_photo.jpg}" class="thumb-lg img-circle" alt="img"></a>
+                                    <h4 class="text-white">[[${session.USERNAME_ADMIN}]]</h4>
+                                    <h5 class="text-white" th:text="${admin.sex}==0?'男':'女'">未填写</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-btm-box">
+                            <div class="col-md-4 col-sm-4 text-center">
+                                <p class="text-purple"><i class="ti-facebook"></i></p>
+                                <h1>258</h1>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-center">
+                                <p class="text-blue"><i class="ti-twitter"></i></p>
+                                <h1>125</h1>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-center">
+                                <p class="text-danger"><i class="ti-dribbble"></i></p>
+                                <h1>556</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    <div class="white-box">
+                        <form class="form-horizontal form-material" th:action="@{/admin/information}" method="post">
+                            <input type="hidden" name="_method" value="put"/>
+                            <!--存放id-->
+                            <input type="hidden" name="id"  th:value="${admin.id}"/>
+                            <div class="form-group">
+                                <label class="col-md-12">用户名</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="Johnathan Doe" th:name="name" class="form-control form-control-line" th:value="${admin.name}" readonly></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">密码</label>
+                                <div class="col-md-12">
+                                    <input type="password" value="password" th:name="password" class="form-control form-control-line" th:value="${admin.password}" readonly></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">性别</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="col-md-12">
+                                            <input type="radio" aria-label="Radio button for following text input" name="sex" th:checked="${admin.sex} == 0? true : false"  value="0"> 男</br></br>
+                                            <input type="radio" aria-label="Radio button for following text input" name="sex" th:checked="${admin.sex} == 1 ? true : false" value="1"> 女
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-email" class="col-md-12">Email</label>
+                                <div class="col-md-12">
+                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" th:name="email" id="example-email" th:value="${admin.email}"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">电话</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="157xxxxxxxx" th:name="phone" class="form-control form-control-line" th:value="${admin.phone}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">个性签名</label>
+                                <div class="col-md-12">
+                                    <textarea rows="5" class="form-control form-control-line" th:name="message" th:text="${admin.message}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success" type="submit">修改</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+        <footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+    <!--Nice scroll JavaScript -->
+    <script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+</body>
+
+</html>

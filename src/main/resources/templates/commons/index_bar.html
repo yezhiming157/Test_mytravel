@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<!--引入首部栏-->
+<nav class="navbar navbar-default w3l aits wow bounceInUp agileits w3layouts" th:fragment="topbar">
+    <div class="container">
+
+        <div class="navbar-header agileits w3layouts">
+            <button type="button" class="navbar-toggle agileits w3layouts collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only agileits w3layouts">JXAU旅游网</span>
+                <span class="icon-bar w3l"></span>
+                <span class="icon-bar aits"></span>
+                <span class="icon-bar w3laits"></span>
+            </button>
+            <a class="navbar-brand agileits w3layouts" href="index.html" th:href="@{/index}">JXAU旅游网</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse agileits w3layouts navbar-right collapse">
+            <ul class="nav agileits w3layouts navbar-nav">
+                <li th:class="${act} == 'index'?'active'" class="active"><a href="index.html" th:href="@{/index}">首页</a></li>
+                <li th:class="${act} == 'about'?'active'"><a href="about.html" th:href="@{/user/about}">关于</a></li>
+                <li th:class="${act} == 'cuisines'?'active'"><a href="cuisines.html" th:href="@{/user/cuisines}">美食</a></li>
+                <li th:class="${act} == 'gallery'?'active'"><a href="gallery.html" th:href="@{/user/gallery}">景点</a></li>
+                <li th:class="${act} == 'booking'?'active'"><a href="booking.   html" th:href="@{/user/booking}">预订与联系</a></li>
+                <li th:class="${act} == 'myBooking'?'active'"><a href="myBooking.html" th:href="@{/user/myBooking}">我的订单</a></li>
+                <li th:if="${session.USERNAME_USER}==null" th:class="${act} == 'login'?'active'"><a href="login.html" th:href="@{/user/login}">登录</a></li>
+                <li th:if="${session.USERNAME_USER}!=null"><a href="login.html" th:href="@{/user/logout}" style="color:#ff2d16;">退出登录</a></li>
+                <li th:if="${session.USERNAME_USER}!=null"><a style="color: #1411ff;">[[${session.USERNAME_USER}]]</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!--引入尾部栏-->
+<!-- Footer -->
+<div class="footer agileits w3layouts" th:fragment="footerbar">
+    <div class="container">
+
+        <div class="col-md-6 col-sm-6 agileits w3layouts footer-grids">
+            <div class="col-md-4 col-sm-4 footer-grid agileits w3layouts footer-grid-1 wow fadeInUp">
+                <ul class="agileits w3layouts">
+                    <li class="agileits w3layouts">五星级酒店</li>
+                    <li class="agileits w3layouts">海滩胜地</li>
+                    <li class="agileits w3layouts">海滨别墅</li>
+                    <li class="agileits w3layouts">水屋</li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-4 footer-grid agileits w3layouts footer-grid-2 wow fadeInUp">
+                <ul class="agileits w3layouts">
+                    <li class="agileits w3layouts"><a href="gallery.html" th:href="@{/user/gallery}">巴哈马</a></li>
+                    <li class="agileits w3layouts"><a href="gallery.html" th:href="@{/user/gallery}">夏威夷</a></li>
+                    <li class="agileits w3layouts"><a href="gallery.html" th:href="@{/user/gallery}">迈阿密</a></li>
+                    <li class="agileits w3layouts"><a href="gallery.html" th:href="@{/user/gallery}">伊维萨岛</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-4 footer-grid agileits w3layouts footer-grid-3 wow fadeInUp">
+                <ul class="agileits w3layouts">
+                    <li class="agileits w3layouts"><a href="about.html" th:href="@{/user/about}">关于</a></li>
+                    <li class="agileits w3layouts"><a href="cuisines.html" th:href="@{/user/cuisines}">美食</a></li>
+                    <li class="agileits w3layouts"><a href="gallery.html" th:href="@{/user/gallery}">风景</a></li>
+                    <li class="agileits w3layouts"><a href="booking.html" th:href="@{/user/booking}">联系</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 footer-grids agileits w3layouts newsletter wow fadeInUp">
+            <h4>保持联系</h4>
+            <p>订阅我们的时事通讯并了解我们的最新项目。</p>
+            <form action="#" method="post">
+                <input type="text" placeholder="Email" name="Email" required="">
+                <input type="submit" value="SUBSCRIBE">
+            </form>
+        </div>
+
+        <div class="col-md-6 col-sm-6 footer-grids agileits w3layouts social wow fadeInUp">
+            <ul class="social-icons">
+                <li class="agileits w3layouts"><a href="#" class="facebook agileits w3layouts" title="Go to Our Facebook Page"></a></li>
+                <li class="agileits w3layouts"><a href="#" class="twitter agileits w3layouts" title="Go to Our Twitter Account"></a></li>
+                <li class="agileits w3layouts"><a href="#" class="googleplus agileits w3layouts" title="Go to Our Google Plus Account"></a></li>
+                <li class="agileits w3layouts"><a href="#" class="instagram agileits w3layouts" title="Go to Our Instagram Account"></a></li>
+                <li class="agileits w3layouts"><a href="#" class="youtube agileits w3layouts" title="Go to Our Youtube Channel"></a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-6 footer-grids agileits w3layouts copyright wow fadeInUp">
+            <p>2020 © my Travel — zhimingYe <a href="#" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a>  - Collect from <a href="#" target="_blank" title="JXAU旅游网"> @ 江西农业大学</a> </p>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+</div>
+</body>
+</html>

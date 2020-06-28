@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!--引入top bar-->
+    <div th:replace="commons/bar::topbar"></div>
+    <!-- 引入left bar-->
+    <div th:replace="commons/bar::leftbar"></div>
+    <!-- Page Content -->
+        <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-12">
+                    <h4 class="page-title">酒店列表</h4>
+                    <ol class="breadcrumb">
+                        <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                        <li><a href="#" th:href="@{/admin/hotels}">酒店列表</a></li>
+                        <li class="active">酒店信息</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <div class="white-box">
+                        <form class="form-horizontal form-material"  method="post" enctype="multipart/form-data">
+                            <!--存放id-->
+                            <input type="hidden" name="id" id="hotelid"  th:if="${hotel!=null}" th:value="${hotel.id}"/>
+                            <div class="form-group">
+                                <label class="col-md-12">酒店名称</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="XXXXXX酒店" id="name"  class="form-control form-control-line" th:value="${hotel!=null}?${hotel.name}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">酒店价格($)</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="col-md-12">
+                                            <input type="text"  placeholder="单位：$" id="price" th:name="price" class="form-control form-control-line" th:value="${hotel!=null}?${hotel.price}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">详情</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:name="comment" id="comment" th:value="${hotel!=null}?${hotel.comment}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">库存</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:name="repertory" id="repertory" th:value="${hotel!=null}?${hotel.repertory}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">房间类型</label>
+                                <div class="col-md-12">
+                                  <!--  <input type="text"  class="form-control form-control-line" th:name="type" id="type" th:value="${hotel!=null}?${hotel.type}">-->
+
+                                    <select class="dropdown agileits w3layouts" th:name="type" th:value="${hotel!=null}?${hotel.type}"  id="type" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                                        <option value="1"></option>
+                                        <option value="单人间">单人间</option>
+                                        <option value="高级单人间">高级单人间</option>
+                                        <option value="双人间">双人间</option>
+                                        <option value="高级双人间">高级双人间</option>
+                                        <option value="豪华套房">豪华套房</option>
+                                        <option value="行政套房">行政套房</option>
+                                        <option value="海景套房">海景套房</option>
+                                        <option value="总统套房">总统套房</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">评分</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:name="star" id="star" th:value="${hotel!=null}?${hotel.star}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">日期</label>
+                                <div class="col-md-12">
+                                    <input type="date"  th:name="date" min="2020-03-12" id="date" th:value="${hotel!=null}?${hotel.date}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">地址</label>
+                                <div class="col-md-12">
+                                    <input type="text"  class="form-control form-control-line" th:name="address" id="address" th:value="${hotel!=null}?${hotel.address}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success" type="button" th:onclick="${hotel!=null}?'modify()':'save()'" th:text="${hotel!=null}?'修改':'添加'">修改</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+            <!-- /.container-fluid -->
+        </div>
+    <!-- /#page-wrapper -->
+    <footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+<!--Nice scroll JavaScript -->
+<script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+<!--Wave Effects -->
+<script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+<script type="text/javascript" src="jquery/layer/layer.js" th:src="@{/asserts/login_resource/jquery/layer/layer.js}"></script>
+
+
+<script type="text/javascript">
+        function modify() {
+            var id = $("#hotelid");
+            var name = $("#name");
+            var price = $("#price");
+            var comment = $("#comment");
+            var type = $ ("#type");
+            var repertory = $("#repertory");
+            var star = $("#star");
+            var date = $("#date");
+            var address = $("#address");
+            $.ajax({
+                url :"/admin/hotel",
+                type : "PUT",
+                data :{
+                    "id" : id.val(),
+                    "name" : name.val(),
+                    "price" : price.val(),
+                    "comment" : comment.val(),
+                    "type" : type.val(),
+                    "repertory" : repertory.val(),
+                    "star" : star.val(),
+                    "date" : date.val(),
+                    "address" : address.val()
+                },
+                success:function(result){
+                    if (result.success){
+                        layer.msg("修改成功！", {time : 1000,icon : 6,shift : 5});
+                        window.location.href = "/admin/hotels";
+                    }else{
+                        layer.msg(result.message, {time : 1000,icon : 5,shift : 6});
+                    }
+                }
+            });
+        }
+
+        function save() {
+            var id = $("#hotelid");
+            var name = $("#name");
+            var price = $("#price");
+            var comment = $("#comment");
+            var type = $ ("#type");
+            var repertory = $("#repertory");
+            var star = $("#star");
+            var date = $("#date");
+            var address = $("#address");
+            $.ajax({
+                url :"/admin/hotel",
+                type : "POST",
+                data :{
+                    "id" : id.val(),
+                    "name" : name.val(),
+                    "price" : price.val(),
+                    "comment" : comment.val(),
+                    "type" : type.val(),
+                    "repertory" : repertory.val(),
+                    "star" : star.val(),
+                    "date" : date.val(),
+                    "address" : address.val()
+                },
+                success:function(result){
+                    if (result.success){
+                        layer.msg("添加成功！", {time : 1000,icon : 6,shift : 5});
+                        window.location.href = "/admin/hotels";
+                    }else{
+                        layer.msg(result.message, {time : 1000,icon : 5,shift : 6});
+                    }
+                }
+            });
+        }
+</script>
+</body>
+
+</html>

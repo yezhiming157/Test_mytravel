@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!--引入top bar-->
+        <div th:replace="commons/bar::topbar"></div>
+        <!-- 引入left bar-->
+        <div th:replace="commons/bar::leftbar"></div>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-12">
+                        <h4 class="page-title">用户列表</h4>
+                        <ol class="breadcrumb">
+                            <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                            <li class="active">用户列表</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3>用户列表</h3>
+                            <div class="table-responsive">
+                                <form class="form-inline" role="form" style="float: left;">
+                                    <div class="form-group has-feedback">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">查询</div>
+                                            <input id="queryText" class="form-control has-success"
+                                                   type="text" placeholder="请输入需要查询的账号">
+                                        </div>
+                                    </div>
+                                    <button id="queryBtn" type="button" class="btn btn-warning">
+                                        <i class="glyphicon glyphicon-search"></i> 查询
+                                    </button>
+                                </form>
+                                <br>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account</th>
+                                            <th>Password</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Stauts</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="user,num:${pages.datas}">
+                                            <a type="hidden" th:value="${user.id}"></a>
+                                            <td th:text="${num.count}"></td>
+                                            <td>[[${user.name}]]</td>
+                                            <td>[[${user.password}]]</td>
+                                            <td>[[${user.phone}]]</td>
+                                            <td>[[${user.email}]]</td>
+                                            <td style="color: #ff2d16" th:text="${user.status}==0?'未授权':'已授权'"></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary" th:href="@{/admin/user/}+${user.id}">修改</a>
+                                                <button class="btn btn-sm btn-danger deleteBtn" th:onclick="deleteUser([[${user.id}]],[[${user.name}]])">删除</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <nav aria-label="Page navigation example" style="text-align: center">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" th:href="@{/admin/userpage/}+${1}" aria-label="Previous">
+                                                <span aria-hidden="true">首页</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" th:if="${pages.currentPage > 1}" th:href="@{/admin/userpage/}+${pages.currentPage -1}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li th:each="i:${ #numbers.sequence(1,pages.totalPage)}" class="page-item">
+                                            <a class="page-link" href="#"   th:href="@{/admin/userpage/}+${i}" th:style="${pages.currentPage == i}?'color:red'" th:contenteditable="${pages.currentPage == i}?'false'">[[${i}]]</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" th:if="${pages.currentPage < pages.totalPage}" th:href="@{/admin/userpage/}+${pages.currentPage+1}"  aria-label="Previous">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" th:href="@{/admin/userpage/}+${pages.totalPage}" aria-label="Previous">
+                                                <span aria-hidden="true">尾页</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+        <footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+    <!--Nice scroll JavaScript -->
+    <script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+    <script type="text/javascript" src="jquery/layer/layer.js" th:src="@{/asserts/login_resource/jquery/layer/layer.js}"></script>
+    <script type="text/javascript">
+        function deleteUser(id,name) {
+            layer.confirm("确定要删除【用户名为："+name+"】吗？", {icon : 3,title : '提示'}, function(cindex){
+                layer.close(cindex);
+                $.ajax({
+                    type : "DELETE",
+                    url : "/admin/user",
+                    data : {
+                        "id" : id
+                    },
+                    success : function(result){
+                        if(result.success){
+                            layer.msg("删除成功！",{time : 1000,icon : 6,shift : 5});
+                            window.location.href="/admin/user";
+                        }else{
+                            layer.msg(result.message,{time : 1000,icon : 5,shift : 6});
+                        }
+                    },
+                    error : function(e){
+                        layer.msg("出现未知错误！",{time : 1000,icon : 5,shift : 6});
+                    }
+                });
+            },function(cindex){
+                layer.close(cindex);
+            });
+        }
+
+
+        $("#queryBtn").click(function(){
+            queryText = $("#queryText").val().trim();
+            if(queryText !="" && queryText.length !=0){
+                window.location.href ="/admin/username/"+queryText;
+            }else {
+                window.location.href="/admin/user";
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

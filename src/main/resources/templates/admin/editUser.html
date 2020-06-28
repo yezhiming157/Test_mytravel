@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        #div_back
+        {
+            width:1000px;
+            height:720px;
+            border:1px solid gray;
+            background-image:url("/images/big/pika.jpg");
+            background-repeat:no-repeat;
+            position: absolute;
+            left:50%;
+            top:24%;
+            opacity: 0.4;
+            margin-left:-100px;
+            margin-top:-100px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!--引入top bar-->
+    <div th:replace="commons/bar::topbar"></div>
+    <!-- 引入left bar-->
+    <div th:replace="commons/bar::leftbar"></div>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-12">
+                    <h4 class="page-title">用户列表</h4>
+                    <ol class="breadcrumb">
+                        <li><a href="#" th:href="@{/admin/main.html}">主页</a></li>
+                        <li><a href="#" th:href="@{/admin/user}">用户列表</a></li>
+                        <li class="active">用户个人信息</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div id="div_back">
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <div class="white-box">
+                        <form class="form-horizontal form-material" th:action="@{/admin/information}" method="post">
+                            <input type="hidden" name="_method" value="put"/>
+                            <!--存放id-->
+                            <input type="hidden" name="id" id="userid"   th:value="${user.id}"/>
+                            <div class="form-group">
+                                <label class="col-md-12">Accoutn</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="Johnathan Doe" id="name" th:name="name" class="form-control form-control-line" th:value="${user.name}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Password</label>
+                                <div class="col-md-12">
+                                    <input type="password" value="password" th:name="password" id="password" class="form-control form-control-line" th:value="${user.password}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Status</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="col-md-12">
+                                            <input type="radio" aria-label="Radio button for following text input" id="status" name="status" th:checked="${user.status} == 0? true : false"  value="0"> 未授权</br></br>
+                                            <input type="radio" aria-label="Radio button for following text input" id="status" name="status" th:checked="${user.status} == 1 ? true : false" value="1"> 已授权
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Phone</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="157xxxxxxxx" id="phone" th:name="phone" class="form-control form-control-line" th:value="${user.phone}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Email</label>
+                                <div class="col-md-12">
+                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line"  th:name="email" id="email" th:value="${user.email}"> </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success" type="button" onclick="modify()">修改</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+<footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+<!--Nice scroll JavaScript -->
+<script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+<!--Wave Effects -->
+<script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+<script type="text/javascript" src="jquery/layer/layer.js" th:src="@{/asserts/login_resource/jquery/layer/layer.js}"></script>
+<script type="text/javascript">
+        function modify() {
+            var id = $("#userid");
+            var name = $("#name");
+            var password = $ ("#password");
+            var phone = $ ("#phone");
+            var email = $ ("#email");
+            var status = $("input[name='status']:checked");
+            alert(status.val());
+            $.ajax({
+                url :"/admin/user",
+                type : "PUT",
+                data :{
+                    "id" : id.val(),
+                    "name" : name.val(),
+                    "password" : password.val(),
+                    "status" : status.val(),
+                    "phone" : phone.val(),
+                    "email" : email.val(),
+                },
+                success:function(result){
+                    if (result.success){
+                        layer.msg("修改成功！", {time : 1000,icon : 6,shift : 5});
+                        window.location.href = "/admin/user";
+                    }else{
+                        layer.msg(result.message, {time : 1000,icon : 5,shift : 6});
+                    }
+                }
+            });
+        }
+</script>
+</body>
+
+</html>

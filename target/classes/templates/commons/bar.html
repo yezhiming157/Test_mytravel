@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--引入顶部栏 top bar-->
+<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0" th:fragment="topbar">
+    <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+        <div class="top-left-part"><a class="logo" href="dashboard.html" th:href="@{/admin/main.html}"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">JXAU旅游网</span></a></div>
+        <ul class="nav navbar-top-links navbar-left hidden-xs">
+            <li><a href="javascript:void(0)" class="open-close hidden-xs hidden-lg waves-effect waves-light"><i class="ti-arrow-circle-left ti-menu"></i></a></li>
+        </ul>
+        <ul class="nav navbar-top-links navbar-right pull-right">
+            <li>
+                <form role="search" class="app-search hidden-xs">
+                    <input type="text" placeholder="Search..." class="form-control">
+                    <a href=""><i class="ti-search"></i></a>
+                </form>
+            </li>
+            <li>
+                <a class="profile-pic" href="#"> <img src="images/users/hritik.jpg"  th:src="@{/images/users/head_photo.jpg}" alt="user-img" width="36" class="img-circle">
+                    <b class="hidden-xs">[[${session.USERNAME_ADMIN}]] </b></a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-header -->
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
+</nav>
+
+
+<!-- 左边栏 left bar -->
+<div class="navbar-default sidebar nicescroll" role="navigation" th:fragment="leftbar">
+    <div class="sidebar-nav navbar-collapse ">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="ti-search"></i> </button>
+                            </span>
+                </div>
+            </li>
+            <li>
+                <a href="dashboard.html" th:href="@{/admin/main.html}" class="waves-effect"><i class="glyphicon glyphicon-fire fa-fw"></i> 主页</a>
+            </li>
+            <li>
+                <a href="profile.html" th:href="@{/admin/information/}+${session.USERNAME_ADMIN}" class="waves-effect"><i class="ti-user fa-fw"></i>个人信息</a>
+            </li>
+            <li>
+                <a href="#" th:href="@{/admin/user}" class="waves-effect"><i class="ti-layout fa-fw"></i>用户管理</a>
+            </li>
+            <li>
+                <a href="#" th:href="@{/admin/gallerys}" class="waves-effect"><i class="ti-face-smile fa-fw"></i>相册管理 </a>
+            </li>
+            <li>
+                <a href="#" th:href="@{/admin/scenics}" class="waves-effect"><i class="ti-location-pin fa-fw"></i> 景点管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{/admin/hotels}"><i class="ti-files fa-fw"></i> 酒店管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{/admin/messages}"><i class="ti-files fa-fw"></i> 留言管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{/admin/newss}"><i class="ti-info fa-fw"></i> 新闻管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{ /admin/toOrderIndex}"><i class="ti-files fa-fw"></i> 订单管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{/admin/toScenicOrder}"><i class="ti-files fa-fw"></i> 景点订单管理</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect" th:href="@{/admin/hotelOrders}"><i class="ti-files fa-fw"></i> 酒店订单管理</a>
+            </li>
+        </ul>
+        <div class="center p-20">
+            <span class="hide-menu"><a href="/admin/logout"  class="btn btn-info btn-danger btn-rounded waves-effect waves-light">退出登录</a></span>
+        </div>
+        <div class="am-panel am-panel-default admin-sidebar-panel" style="margin-top: 100px">
+            <div class="white-box">
+                <p  style="text-align: center"><span class="glyphicon glyphicon-book"></span> 公告</p>
+                <p style="text-align: center">时光静好，与君语；</p>
+                <p style="text-align: center">细水流年，与君同。</p>
+                <p style="margin-left: 60px">—— ZhimingYe</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+</body>
+</html>

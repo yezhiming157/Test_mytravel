@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" th:href="@{/images/favicon.png}">
+    <title>JXAU旅游网后台管理</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" th:href="@{/bower_components/metisMenu/dist/metisMenu.min.css}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="bower_components/morrisjs/morris.css" th:href="@{/bower_components/morrisjs/morris.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css"  th:href="@{/css/style.css}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!--引入top bar-->
+        <div th:replace="commons/bar::topbar"></div>
+        <!-- 引入left bar-->
+       <div th:replace="commons/bar::leftbar"></div>
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-12">
+                        <h4 class="page-title">Welcome to My Admin</h4>
+                        <ol class="breadcrumb">
+                            <li><a href="#">主页</a></li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <div class="row row-in">
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="col-in text-center">
+                                        <h5 class="text-danger">上月订单</h5>
+                                        <h3 class="counter">15645</h3>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="col-in text-center b-r-none">
+                                        <h5 class="text-muted text-warning">上周订单</h5>
+                                        <h3 class="counter">4250</h3>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="col-in text-center">
+                                        <h5 class="text-muted text-purple">昨天订单</h5>
+                                        <h3 class="counter">3450</h3>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="col-in text-center b-0">
+                                        <h5 class="text-info">今日订单</h5>
+                                        <h3 class="counter">2500</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="morris-area-chart" style="height: 345px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-6 col-xs-12 col-sm-12">
+                        <div class="white-box">
+                            <h3>To Do List</h3>
+                            <ul class="list-task list-group" data-role="tasklist">
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
+                                        <label for="inputSchedule"> <span>Schedule meeting</span> </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
+                                        <label for="inputCall"> <span>Call clients for follow-up</span> <span class="label label-danger">Today</span> </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                                        <label for="inputBook"> <span>Book flight for holiday</span> </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
+                                        <label for="inputForward"> <span>Forward important tasks</span> <span class="label label-warning">2 weeks</span> </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
+                                        <label for="inputRecieve"> <span>Recieve shipment</span> </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputForward2" name="inputCheckboxesd">
+                                        <label for="inputForward2"> <span>Important tasks</span> <span class="label label-success">2 weeks</span> </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 col-sm-12">
+                        <div class="white-box">
+                            <h3>You have 5 new messages</h3>
+                            <div class="message-center">
+                                <a href="#">
+                                    <div class="user-img">
+                                        <img src="images/users/pawandeep.jpg" th:src="@{/images/users/pawandeep.jpg}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span>
+                                    </div>
+                                    <div class="mail-contnet">
+                                        <h5>Pavan kumar</h5>
+                                        <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="images/users/sonu.jpg" th:src="@{/images/users/sonu.jpg}" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Sonu Nigam</h5>
+                                        <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="images/users/arijit.jpg" th:src="@{/images/users/arijit.jpg}" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Arijit Sinh</h5>
+                                        <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="images/users/genu.jpg" th:src="@{/images/users/genu.jpg}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Genelia Deshmukh</h5>
+                                        <span class="mail-desc">I love to do acting and dancing</span> <span class="time">9:08 AM</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="b-none">
+                                    <div class="user-img"> <img src="images/users/pawandeep.jpg" th:src="@{/images/users/pawandeep.jpg}" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Pavan kumar</h5>
+                                        <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+        <footer class="footer text-center" style="margin-top:300px"> 2020 © my Travel — zhimingYe <a href="#" th:href="@{/index}" target="_blank" title="JXAU旅游网"> @ JXAU旅游网</a> </footer>
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js" th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js" th:src="@{/bower_components/metisMenu/dist/metisMenu.min.js}"></script>
+    <!--Nice scroll JavaScript -->
+    <script src="js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+    <!--Morris JavaScript -->
+    <script src="bower_components/raphael/raphael-min.js" th:src="@{/bower_components/raphael/raphael-min.js}"></script>
+    <script src="bower_components/morrisjs/morris.js" th:src="@{/bower_components/morrisjs/morris.js}"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js" th:src="@{/js/waves.js}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/myadmin.js" th:src="@{/js/myadmin.js}"></script>
+    <script src="js/dashboard1.js" th:src="@{/js/dashboard1.js}"></script>
+</body>
+
+</html>
